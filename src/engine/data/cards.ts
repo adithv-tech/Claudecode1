@@ -1,0 +1,350 @@
+import type { CardDef } from '../types';
+
+const defs: CardDef[] = [
+  // --- Starter --------------------------------------------------------------
+  {
+    id: 'ping',
+    name: 'Ping',
+    type: 'attack',
+    rarity: 'starter',
+    cost: 1,
+    effects: [{ kind: 'damage', amount: 6 }],
+    upgrade: { effects: [{ kind: 'damage', amount: 9 }] },
+  },
+  {
+    id: 'firewall',
+    name: 'Firewall',
+    type: 'skill',
+    rarity: 'starter',
+    cost: 1,
+    effects: [{ kind: 'block', amount: 5 }],
+    upgrade: { effects: [{ kind: 'block', amount: 8 }] },
+  },
+  {
+    id: 'inject',
+    name: 'Inject',
+    type: 'skill',
+    rarity: 'starter',
+    cost: 1,
+    effects: [{ kind: 'apply', status: 'poison', amount: 4, to: 'target' }],
+    upgrade: { effects: [{ kind: 'apply', status: 'poison', amount: 6, to: 'target' }] },
+  },
+  {
+    id: 'overclock',
+    name: 'Overclock',
+    type: 'skill',
+    rarity: 'starter',
+    cost: 1,
+    effects: [
+      { kind: 'apply', status: 'overdrive', amount: 1, to: 'self' },
+      { kind: 'draw', amount: 2 },
+    ],
+    upgrade: { cost: 0 },
+  },
+
+  // --- Common ---------------------------------------------------------------
+  {
+    id: 'packet_storm',
+    name: 'Packet Storm',
+    type: 'attack',
+    rarity: 'common',
+    cost: 1,
+    effects: [{ kind: 'damage', amount: 3, times: 3 }],
+    upgrade: { effects: [{ kind: 'damage', amount: 4, times: 3 }] },
+  },
+  {
+    id: 'stun_lance',
+    name: 'Stun Lance',
+    type: 'attack',
+    rarity: 'common',
+    cost: 2,
+    effects: [
+      { kind: 'damage', amount: 8 },
+      { kind: 'apply', status: 'stun', amount: 1, to: 'target' },
+    ],
+    upgrade: {
+      effects: [
+        { kind: 'damage', amount: 12 },
+        { kind: 'apply', status: 'stun', amount: 1, to: 'target' },
+      ],
+    },
+  },
+  {
+    id: 'venom_spike',
+    name: 'Venom Spike',
+    type: 'attack',
+    rarity: 'common',
+    cost: 1,
+    effects: [
+      { kind: 'damage', amount: 4 },
+      { kind: 'apply', status: 'poison', amount: 3, to: 'target' },
+    ],
+    upgrade: {
+      effects: [
+        { kind: 'damage', amount: 5 },
+        { kind: 'apply', status: 'poison', amount: 5, to: 'target' },
+      ],
+    },
+  },
+  {
+    id: 'cleave_protocol',
+    name: 'Cleave Protocol',
+    type: 'attack',
+    rarity: 'common',
+    cost: 1,
+    effects: [{ kind: 'damage', amount: 7, to: 'all' }],
+    upgrade: { effects: [{ kind: 'damage', amount: 10, to: 'all' }] },
+  },
+  {
+    id: 'exploit',
+    name: 'Exploit',
+    type: 'attack',
+    rarity: 'common',
+    cost: 0,
+    effects: [
+      { kind: 'damage', amount: 3 },
+      { kind: 'apply', status: 'vulnerable', amount: 2, to: 'target' },
+    ],
+    upgrade: {
+      effects: [
+        { kind: 'damage', amount: 5 },
+        { kind: 'apply', status: 'vulnerable', amount: 3, to: 'target' },
+      ],
+    },
+  },
+  {
+    id: 'barrier_matrix',
+    name: 'Barrier Matrix',
+    type: 'skill',
+    rarity: 'common',
+    cost: 1,
+    effects: [{ kind: 'apply', status: 'shield', amount: 5, to: 'self' }],
+    upgrade: { effects: [{ kind: 'apply', status: 'shield', amount: 8, to: 'self' }] },
+  },
+  {
+    id: 'defrag',
+    name: 'Defrag',
+    type: 'skill',
+    rarity: 'common',
+    cost: 1,
+    effects: [
+      { kind: 'block', amount: 6 },
+      { kind: 'draw', amount: 1 },
+    ],
+    upgrade: {
+      effects: [
+        { kind: 'block', amount: 9 },
+        { kind: 'draw', amount: 1 },
+      ],
+    },
+  },
+  {
+    id: 'jam_signal',
+    name: 'Jam Signal',
+    type: 'skill',
+    rarity: 'common',
+    cost: 1,
+    effects: [
+      { kind: 'apply', status: 'weak', amount: 2, to: 'target' },
+      { kind: 'block', amount: 4 },
+    ],
+    upgrade: {
+      effects: [
+        { kind: 'apply', status: 'weak', amount: 3, to: 'target' },
+        { kind: 'block', amount: 6 },
+      ],
+    },
+  },
+  {
+    id: 'recompile',
+    name: 'Recompile',
+    type: 'skill',
+    rarity: 'common',
+    cost: 0,
+    effects: [{ kind: 'draw', amount: 2 }],
+    exhaust: true,
+    upgrade: { effects: [{ kind: 'draw', amount: 3 }] },
+  },
+
+  // --- Uncommon -------------------------------------------------------------
+  {
+    id: 'feedback_loop',
+    name: 'Feedback Loop',
+    type: 'attack',
+    rarity: 'uncommon',
+    cost: 1,
+    effects: [{ kind: 'damageFromBlock' }],
+    upgrade: { cost: 0 },
+    flavor: 'Turn their packets against them.',
+  },
+  {
+    id: 'payload_detonate',
+    name: 'Payload Detonate',
+    type: 'attack',
+    rarity: 'uncommon',
+    cost: 1,
+    effects: [{ kind: 'detonate', mult: 2 }],
+    upgrade: { effects: [{ kind: 'detonate', mult: 3 }] },
+  },
+  {
+    id: 'siphon',
+    name: 'Siphon',
+    type: 'attack',
+    rarity: 'uncommon',
+    cost: 1,
+    effects: [
+      { kind: 'damage', amount: 7 },
+      { kind: 'heal', amount: 3 },
+    ],
+    upgrade: {
+      effects: [
+        { kind: 'damage', amount: 9 },
+        { kind: 'heal', amount: 5 },
+      ],
+    },
+  },
+  {
+    id: 'overload_beam',
+    name: 'Overload Beam',
+    type: 'attack',
+    rarity: 'uncommon',
+    cost: 2,
+    effects: [{ kind: 'damage', amount: 15 }],
+    upgrade: { effects: [{ kind: 'damage', amount: 21 }] },
+  },
+  {
+    id: 'toxic_cloud',
+    name: 'Toxic Cloud',
+    type: 'skill',
+    rarity: 'uncommon',
+    cost: 2,
+    effects: [{ kind: 'apply', status: 'poison', amount: 5, to: 'all' }],
+    upgrade: { effects: [{ kind: 'apply', status: 'poison', amount: 7, to: 'all' }] },
+  },
+  {
+    id: 'emp',
+    name: 'EMP',
+    type: 'skill',
+    rarity: 'uncommon',
+    cost: 2,
+    effects: [{ kind: 'apply', status: 'stun', amount: 1, to: 'all' }],
+    exhaust: true,
+    upgrade: { cost: 1 },
+  },
+  {
+    id: 'power_surge',
+    name: 'Power Surge',
+    type: 'skill',
+    rarity: 'uncommon',
+    cost: 0,
+    effects: [{ kind: 'energy', amount: 2 }],
+    exhaust: true,
+    upgrade: { effects: [{ kind: 'energy', amount: 3 }] },
+  },
+  {
+    id: 'mirror_shell',
+    name: 'Mirror Shell',
+    type: 'skill',
+    rarity: 'uncommon',
+    cost: 2,
+    effects: [
+      { kind: 'block', amount: 12 },
+      { kind: 'apply', status: 'thorns', amount: 2, to: 'self' },
+    ],
+    upgrade: {
+      effects: [
+        { kind: 'block', amount: 15 },
+        { kind: 'apply', status: 'thorns', amount: 3, to: 'self' },
+      ],
+    },
+  },
+  {
+    id: 'adaptive_ai',
+    name: 'Adaptive AI',
+    type: 'power',
+    rarity: 'uncommon',
+    cost: 1,
+    effects: [{ kind: 'apply', status: 'strength', amount: 2, to: 'self' }],
+    upgrade: { effects: [{ kind: 'apply', status: 'strength', amount: 3, to: 'self' }] },
+  },
+  {
+    id: 'spiked_chassis',
+    name: 'Spiked Chassis',
+    type: 'power',
+    rarity: 'uncommon',
+    cost: 1,
+    effects: [{ kind: 'apply', status: 'thorns', amount: 3, to: 'self' }],
+    upgrade: { effects: [{ kind: 'apply', status: 'thorns', amount: 5, to: 'self' }] },
+  },
+
+  // --- Rare -----------------------------------------------------------------
+  {
+    id: 'zero_day',
+    name: 'Zero Day',
+    type: 'attack',
+    rarity: 'rare',
+    cost: 2,
+    effects: [{ kind: 'damage', amount: 26 }],
+    exhaust: true,
+    upgrade: { effects: [{ kind: 'damage', amount: 34 }] },
+    flavor: 'Unpatched. Unstoppable.',
+  },
+  {
+    id: 'catalyst',
+    name: 'Catalyst',
+    type: 'skill',
+    rarity: 'rare',
+    cost: 1,
+    effects: [{ kind: 'multiplyStatus', status: 'poison', mult: 2 }],
+    exhaust: true,
+    upgrade: { exhaust: false },
+  },
+  {
+    id: 'system_restore',
+    name: 'System Restore',
+    type: 'skill',
+    rarity: 'rare',
+    cost: 1,
+    effects: [{ kind: 'heal', amount: 10 }],
+    exhaust: true,
+    upgrade: { effects: [{ kind: 'heal', amount: 15 }] },
+  },
+  {
+    id: 'reactor_core',
+    name: 'Reactor Core',
+    type: 'power',
+    rarity: 'rare',
+    cost: 2,
+    effects: [{ kind: 'apply', status: 'reactor', amount: 1, to: 'self' }],
+    upgrade: { cost: 1 },
+  },
+  {
+    id: 'nanite_swarm',
+    name: 'Nanite Swarm',
+    type: 'power',
+    rarity: 'rare',
+    cost: 1,
+    effects: [{ kind: 'apply', status: 'nanites', amount: 2, to: 'self' }],
+    upgrade: { effects: [{ kind: 'apply', status: 'nanites', amount: 3, to: 'self' }] },
+  },
+  {
+    id: 'aegis_protocol',
+    name: 'Aegis Protocol',
+    type: 'power',
+    rarity: 'rare',
+    cost: 2,
+    effects: [{ kind: 'apply', status: 'aegis', amount: 4, to: 'self' }],
+    upgrade: { effects: [{ kind: 'apply', status: 'aegis', amount: 6, to: 'self' }] },
+  },
+];
+
+export const CARDS: Record<string, CardDef> = Object.fromEntries(defs.map((d) => [d.id, d]));
+
+export const STARTER_DECK: string[] = [
+  'ping', 'ping', 'ping', 'ping', 'ping',
+  'firewall', 'firewall', 'firewall', 'firewall',
+  'inject',
+  'overclock',
+];
+
+export const DRAFTABLE: CardDef[] = defs.filter((d) => d.rarity !== 'starter');

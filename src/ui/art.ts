@@ -1,0 +1,47 @@
+export const CARD_ART: Record<string, string> = {
+  ping: '📡',
+  firewall: '🧱',
+  inject: '💉',
+  overclock: '⚡',
+  packet_storm: '🌩️',
+  stun_lance: '🔱',
+  venom_spike: '🦂',
+  cleave_protocol: '🌀',
+  exploit: '🪲',
+  barrier_matrix: '🛡️',
+  defrag: '🧩',
+  jam_signal: '📵',
+  recompile: '♻️',
+  feedback_loop: '🔄',
+  payload_detonate: '💥',
+  siphon: '🩸',
+  overload_beam: '🔆',
+  toxic_cloud: '☁️',
+  emp: '📴',
+  power_surge: '🔌',
+  mirror_shell: '🪞',
+  adaptive_ai: '🧠',
+  spiked_chassis: '🦔',
+  zero_day: '☠️',
+  catalyst: '⚗️',
+  system_restore: '💚',
+  reactor_core: '☢️',
+  nanite_swarm: '🦠',
+  aegis_protocol: '🔰',
+};
+
+export const NODE_ICONS = {
+  fight: '⚔️',
+  elite: '👹',
+  rest: '🔧',
+  treasure: '📦',
+  boss: '💀',
+} as const;
+
+export const NODE_LABELS = {
+  fight: 'Rogue Process',
+  elite: 'Elite Program',
+  rest: 'Maintenance Node',
+  treasure: 'Data Cache',
+  boss: 'Kernel Boss',
+} as const;
